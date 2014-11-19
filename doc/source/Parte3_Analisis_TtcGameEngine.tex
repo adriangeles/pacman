@@ -1,0 +1,159 @@
+\chapter{Análisis TfcGameEngine}
+El objetivo de este capítulo es definir el alcance del motor de videojuegos TfcGameEngine para el cual se irán definiendo el conjunto de requisitos requeridos para su desarrollo. En la definición de los requisitos se han tenido en cuento las funcionalidades que ha de cumplir el hito del proyecto Pacmania. 
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%
+%                 Introducción                   %
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Introducción}
+
+Uno de los objetivos principales del proyecto consiste en crear un motor que disminuya el tiempo de desarrollo de futuros videojuegos aportando un conjunto de funcionalidades comunes en todos ellos. 
+Las funcionalidades más importantes que un motor de juegos están directamente relacionadas con la visualización gráfica y el comportamiento de los elementos en función del tiempo. En las siguientes secciones se irán enumerando uno a uno los requisitos que ha de cumplir TfcGameEngine.
+\newline
+
+El código de cara requisito vendrá identificado por:
+\begin{itemize}
+\item Nombre del proyecto: TFC
+\item Módulo del proyecto:  \texttt{T} (TfcGameEngine)
+\item Bloque:   ( G = Generales / V = Visuales / CF =  Comportamiento Físico / O = Otros )
+\item Sección (opcional): enumerado
+\item Requisito: enumerado
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%
+%      Requisitos generales          %
+%%%%%%%%%%%%%%%%%
+
+\section{Requisitos generales}
+
+\begin{description}
+
+\req {TFC:T:G:001} {Se permitirá pausar el motor del juego en cualquier momento lo que implicará:
+	\begin{itemize}
+	\item Mostrar el último frame mostrado hasta que se anule la pausa, es decir, no se procesarán cálculos sobre la lógica del juego mientras el juego esta pausado.
+	\item Se indicará que el juego esta pausado mostrando en pantalla "Pausado" en el idioma correspondiente. 
+	\item Si el dispositivo móvil soportar shaders, este ha de mostrar la imagen renderizada en blanco y negro.
+	\end{itemize}
+}
+
+\req {TFC:T:G:002} { Cuando el dispositivo móvil reciba una llamada entrante automáticamente pasará a estado pausado, se informará al usuario de la llamada para que determine si desea aceptar la llamada o continuar jugando. 
+}
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%
+%      Requisitos del motor gráfico        %
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Requisitos asociados al aspecto gráfico}
+
+\begin{description}
+\req {TFC:T:V:001}{ Existirán un conjunto de funcionalidades que permitirá leer un subconjunto de propiedades de los ficheros en formato Wavefront (.obj y .mtl) generado por la herramienta Blender, estas propiedades son las siguientes:
+	\begin{itemize}
+	\item Vértices que componen cada una de las mallas
+	\item Coordenadas UV de las texturas aplicadas sobre los vértices.
+	\item Texturas
+	\end{itemize}
+}
+
+\req {TFC:T:V:002}{Los elementos de la escena podrán tener asociados las siguientes propiedades:
+	\begin{itemize}
+	\item Una malla que definirá su aspecto gráfico tridimensional
+	\item Las coordenadas de su posición en el escenario
+	\item Los ángulos de rotación respecto a los tres ejes
+	\end{itemize}
+}
+
+\req {TFC:T:V:003}{Se definirá una única cámara cuyas propiedades serán las siguientes:
+	\begin{itemize}
+	\item Localización de la cámara (center)
+	\item Vector que indica donde esta mirando la cámara (lookAt)
+	\item Vector de giro de la cámara respecto su posición (eye)
+	\end{itemize}
+}
+
+\req {TFC:T:V:004}{La escena estará compuesta por un conjunto de elementos y deberá ser procesada y visualizada en la pantalla del dispositivo móvil, es decir, renderizar la escena dependiendo de la situación de una única cámara
+}
+
+\req {TFC:T:V:005} {Se permitirá determinar la posición de una cámara de forma relativa a un elemento de la escena, es decir, la cámara seguirá a un elemento mientras se desplaza a lo largo del escenario como si le persiguiese.
+}
+
+\req{TFC:T:V:006} {Se permitirá incorporar animaciones de la cámara, es decir, definir en función del tiempo las propiedades de la cámara, esto permitirá crear efectos visuales como los siguientes:
+	\begin{itemize}
+	\item Acercar o alejar la cámara sobre una zona del escenario.
+	\item Determinar una trayectoria de la cámara sobre el escenario.
+	\end{itemize}
+}
+
+\req{TFC:T:V:007} { Se permitirá crear cielos/fondos mediante la técnica de skybox. }
+
+\req{TFC:T:V:008} { Se permitirá el uso de shaders si el dispositivo lo soporta OpenGL ES 2.0 } 
+
+\req{TFC:T:V:009} { No se requiere utilizar un modelo de iluminación, lo cual implica:
+	\begin{itemize}
+	\item No existirá iluminación de la escena 
+	\item La iluminación será generada mediante texturas lo que implica que será estática y no se podrán incorporar luces dinámicas.
+	\item Los elementos en movimiento no tendrán sombras y deberán ser simulados en la implementación del videojuego.
+	\end{itemize}
+}
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%      Requisitos de comportamiento  físico        %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Comportamiento físico de los elementos}
+
+\begin{description}
+\req {TFC:T:CF:001} {Existirán un conjunto de propiedades físicas generales que afectarán a los elementos del videojuego que son:
+	\begin{itemize}
+	\item Gravedad: vector que establece las aceleraciones sobre los tres ejes aunque tan sólo suele aplicarse al eje Z atendiendo a la ley de la gravitación universal establecida por Newton sobre la atracciones de los cuerpos.
+	\item Tamaño de una celda, siendo ésta una forma de fraccionar el escenario. 
+	\end{itemize}
+}
+
+\req{TFC:T:CF:002}{Cada uno de los elementos tendrá asociadas las siguientes propiedades: 
+	\begin{itemize}
+	\item Posición del objeto en el escenario con coordenadas tridimensionales.
+	\item Rotación del objeto sobre los distintos ejes que determinará la orientación del mismo.
+	\item Vector velocidad lineal del objeto en el cual se determine la velocidad en cada una de los ejes, mediante el cual se determina la dirección y sentido del objeto, lo cual definirá su trayectoria.
+	\item Vector aceleración lineal del objeto que determina que aceleración esta siendo aplicada a dicho objeto en cada una de los ejes.
+	\item Vector de tiempos de aceleración que determina el tiempo que se esta aplicando una aceleración sobre uno de los ejes. Junto con el vector aceleración se podrá calcular los incrementos 
+de velocidad de un objeto en función del tiempo. El ejemplo mas claro de aceleración es un salto de un elemento donde se esta aplicando una fuerza la cual le hará despegarse del suelo, esa fuerza se ha convertido en una aceleración la cual ha sido aplicada durante un intervalo de tiempo.
+	\item Datos sobre la forma implícita del elemento la cual ha de estar compuesta por una geometría de tipo AABB o la composición de varias de ellas.
+	\item Permitir alterar la posición de un elemento ignorando al motor físico, es lo que llamaremos peticiones diferidas, ya que nos permiten programar ciertos comportamiento de un elemento como pararse automáticamente el situarse a un punto de la escena.
+	\end{itemize}
+}
+
+\req {TFC:T:CF:003\footnote{Para mas información sobre los conceptos físicos y matemáticos consultar el apartado 2 del proyecto, el capitulo de Leyes físicas en computadoras.}}{Se obtendrán las nuevas posiciones de los distintos elementos en función del tiempo trascurrido utilizando las leyes de la cinemática.}
+
+\req {TFC:T:CF:004}{En función de su forma implícita se calcularán las colisiones existentes con otros elementos.}
+
+\req{TFC:T:CF:005} {Las rotaciones asociada a cada elemento implica volver a calcular los posiciones de los puntos que determinar la forma implícita del objeto. Dada la complejidad de recalcular la forma implícita en estructuras AABB  y que la mayoría de los elementos serán simétricos, estos giros han de ser múltiplos de 90 grados}
+
+\req{TFC:T:CF:006} {Las traslaciones asociadas a cada elemento implica volver a calcular los posiciones de los puntos que determinar la forma implícita del objeto.}
+
+\end{description}
+
+El nivel de complejidad muy elevado a la hora de determinar el comportamiento de los distintos elementos del juego, por lo que en el desarrollo del proyecto se ha tratador de determinar un conjunto de funcionalidades mínimas relativamente simple como para el desarrollo de videojuegos como Pacmania, por este motivo, no se han incorporados funcionalidades como las siguientes entre muchas otras:
+
+\begin{description}
+\req {TFC:T:CF:007}{No se tendrán en cuenta los movimiento relacionados con velocidades y aceleraciones angulares}
+\req {TFC:T:CF:008}{No se tendrá en cuenta las ley de conservación del movimiento  ante la detección de una colisión tanto elástica como inelástica.}
+\req {TFC:T:CF:009}{No se utilizarán geometrías adicionales para le cálculo de formas implícitas como esferas, cajas\ldots\ sólo AABB}
+\req {TFC:T:CF:010}{No se establecerán uniones entre los elementos para añadir restricciones sobre el calculo del movimiento para calcular la nueva posición. }
+\req {TFC:T:CF:011}{No se implementará comportamientos físicos de fluidos.}
+
+\end{description}
+
+\section{Otros requisitos}
+
+\begin{description}
+\req {TFC:T:O:001}{ Debe ser compatible para OpenGL ES 1.1 y 2.0 }
+\req {TFC:T.O:002}{ El juego deber ejecutarse de forma continua sin saltos bruscos entre iteraciones del moto (15 frames por segundo para el Htc Desire) }
+\req {TFC:T:G:003} {La velocidad del juego ha de ser independiente de la velocidad del dispositivo, es decir, el tiempo transcurrido entre cada frame no es constante y ha de ser una variable al determinar las futuras posiciones de los elementos. }
+\end{description}
+

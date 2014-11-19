@@ -1,0 +1,311 @@
+\documentclass[12pt,a4paper]{memoir}   
+
+% No fraccionar palabras
+\sloppy
+% Margenes del documento
+
+%  Horizontal 
+\setlength{\hoffset}{0pt}                  % [ 1 ] 
+\setlength{\oddsidemargin}{1.46cm}       % [ 3 ]
+\setlength{\evensidemargin}{-0.54cm}    % [ 3 ] 
+\setlength{\textwidth}{425pt}            % [ 8 ]
+\setlength{\marginparsep}{7pt}        % [ 9 ]
+\setlength{\marginparwidth}{106pt}  % [10]
+
+% Vertical 
+\setlength{\voffset}{-40pt}              %  [ 2 ]
+\setlength{\topmargin}{22pt}                % [ 4 ]
+\setlength{\headheight}{25pt} % [ 5 ]
+\setlength{\headsep}{35pt} % [ 6 ]
+\setlength{\textheight}{600pt} %[ 7 ]
+\renewcommand{\footskip}{75pt} % [11]
+
+\parindent=0pt
+
+% Formato de los capitulos
+\usepackage{fourier} 
+\usepackage[scaled=.92]{helvet}%. Sans serif - Helvetica
+\usepackage{color,calc}
+\newsavebox{\ChpNumBox}
+\makeatletter
+\newcommand*{\thickhrulefill}{%
+\leavevmode\leaders\hrule height 1\p@ \hfill \kern \z@}
+\newcommand*\BuildChpNum[2]{%
+\begin{tabular}[t]{@{}c@{}}
+\makebox[0pt][c]{#1\strut} \\[.5ex]
+\colorbox{gray75}{%
+\rule[-5em]{0pt}{0pt}%
+\rule{1ex}{0pt}\color{white}#2\strut
+\rule{1ex}{0pt}}%
+\end{tabular}}
+\makechapterstyle{BlueBox}{%
+\renewcommand{\chapnamefont}{\large\scshape}
+\renewcommand{\chapnumfont}{\Huge\bfseries}
+\renewcommand{\chaptitlefont}{\raggedright\Huge\bfseries}
+\setlength{\beforechapskip}{20pt}
+\setlength{\midchapskip}{26pt}
+\setlength{\afterchapskip}{40pt}
+\renewcommand{\printchaptername}{}
+\renewcommand{\chapternamenum}{}
+\renewcommand{\printchapternum}{%
+\sbox{\ChpNumBox}{%
+\BuildChpNum{\chapnamefont\@chapapp}%
+{\chapnumfont\thechapter}}}
+\renewcommand{\printchapternonum}{%
+\sbox{\ChpNumBox}{%
+\BuildChpNum{\chapnamefont\vphantom{\@chapapp}}%
+{\chapnumfont\hphantom{\thechapter}}}}
+\renewcommand{\afterchapternum}{}
+\renewcommand{\printchaptertitle}[1]{%
+\usebox{\ChpNumBox}\hfill
+\parbox[t]{\hsize-\wd\ChpNumBox-1em}{%
+\vspace{\midchapskip}%
+\thickhrulefill\par
+\chaptitlefont ##1\par}}%
+}
+\chapterstyle{BlueBox}
+% BABLE - Idioma
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+% FANCYHDR - Para incluir cabeceras
+\let\footruleskip\undefined
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{\markboth{\textbf{\thechapter. #1}}{}} % Formato para el capítulo: N. Nombre
+\renewcommand{\sectionmark}[1]{\markright{\textbf{\thesection. #1}}} % Formato para la sección: N.M. Nombre
+
+
+\renewcommand{\headrulewidth}{0.6pt} % Ancho de la línea horizontal bajo el encabezado
+\renewcommand{\footrulewidth}{0.6pt} % Ancho de la línea horizontal sobre el pie (que en este ejemplo está vacío)
+
+\renewcommand{\footnoterule}{\vspace*{15pt}\dotfill\hfill\vspace*{10pt}}
+
+\fancyhf{}
+\fancyhead[LE]{ \includegraphics[height=0.5in,width=0.5in]{imagenes/EscudoFacultad.jpg} \textbf{Capítulo} \leftmark} % En las páginas impares, parte izquierda del encabezado, aparecerá el nombre de capítulo
+\fancyhead[RO]{\vspace*{0.36in}\rightmark} % En las páginas pares, parte derecha del encabezado, aparecerá el nombre de sección
+%\fancyhead[RO,LE]{\thepage} % Números de página en las esquinas de los encabezados
+\fancyfoot[CO,CE]{\thepage}
+
+% Paquete para mostrar código fuente
+\usepackage{listings}
+
+\lstset{
+         basicstyle=\footnotesize\ttfamily, % Standardschrift
+         %numbers=left,               % Ort der Zeilennummern
+         numberstyle=\tiny,          % Stil der Zeilennummern
+         %stepnumber=2,               % Abstand zwischen den Zeilennummern
+         numbersep=5pt,              % Abstand der Nummern zum Text
+         tabsize=2,                  % Groesse von Tabs
+         extendedchars=true,         %
+         breaklines=true,            % Zeilen werden Umgebrochen
+         keywordstyle=\color{red},
+	 frame=b,         
+         stringstyle=\color{white}\ttfamily, % Farbe der String
+         showspaces=false,           % Leerzeichen anzeigen ?
+         showtabs=false,             % Tabs anzeigen ?
+         xleftmargin=17pt,
+         framexleftmargin=17pt,
+         framexrightmargin=5pt,
+         framexbottommargin=4pt,
+         %backgroundcolor=\color{lightgray},
+         showstringspaces=false      % Leerzeichen in Strings anzeigen ?        
+ }
+
+ \lstloadlanguages{% Check Dokumentation for further languages ...
+         %[Visual]Basic
+         %Pascal
+         %C
+         %C++
+         %XML
+         %HTML
+         Java
+ }
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth - 5.9em}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=30pt, font={bf,footnotesize}}
+
+% Actual 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstset{ 
+     frame=Ltb,
+     xleftmargin=4em,
+     xrightmargin=2em,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\footnotesize\ttfamily,
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+   }
+ 
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+ 
+\lstdefinestyle{consola}
+   {basicstyle=\scriptsize\bf\ttfamily,
+    backgroundcolor=\color{gray75},
+   }
+ 
+\lstdefinestyle{C}
+   {language=C,
+   }
+%  Para incluir url en la bibliografia
+\usepackage{url}
+% AMSMATH - Para incluir fórmulas matemáticas
+\usepackage{amsmath}
+% LONGTABLE - Para incluir tablas que ocupen varias paginas
+\usepackage{longtable}
+\usepackage{multirow}
+% GRAPHIXS - Para incluir imagenes en el documento
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{export}
+% SUBFIGURE - Para incluir subfiguras en el entorno figura
+\usepackage{subfig}
+% Permite poner figuras y que le texto las rodee
+ \usepackage{wrapfig}
+\usepackage[rflt]{floatflt}
+
+\usepackage{float}
+% MINITOC - Indices parciales
+\usepackage{minitoc}                  % Activado
+\mtcselectlanguage{spanish}       % Activado
+%\usepackage{mtcoff}                % Desactivado
+
+\usepackage{caption}
+
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+% COLORBL - Añadiendo color a las tablas
+\usepackage{colortbl}
+\definecolor{Titulo_tabla}{rgb}{0.15,0.25,0.55}
+\definecolor{Pendiente}{rgb}{1.0,0.0,0.0}
+% Permite crear varias columnas
+\usepackage{multicol}
+% DEFINICION DE NUEVOS COMANDOS 
+
+\newcommand{\loremIpsun}[0]{{\color{Pendiente} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non lorem ac ipsum porta laoreet. Duis lectus risus, egestas id volutpat vel, bibendum quis sapien. Aenean iaculis libero odio.}}
+
+\newcommand{\concept}[2]{#1 (\texttt{#2})}
+\newcommand{\req}[2] {\item [#1]#2}
+
+%\usepackage[firstpage]{draftwatermark}
+%\SetWatermarkLightness{0.1}
+%\SetWatermarkScale{0.5}
+%\SetWatermarkText{\includegraphics{img/iconopacman.jpg}}
+
+
+\author{Adrián Ángeles Ramón}
+\title{Desarrollo de videojuegos para plataforma Android con aceleración Hardware}
+
+
+
+
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{tabular}{lc}
+\multirow{3}{*}{\includegraphics[height=3cm]{imagenes/EscudoFacultad.jpg}} & \\
+	                    									  &\textbf{{\LARGE Universidad Politécnica de Madrid}}\\[0.5cm]
+												  & {\LARGE Facultad de Informática}\\[6cm]
+\end{tabular}
+
+\begin{center}
+\hrulefill\\[0.3cm]
+{\Large Trabajo fin de carrera}\\
+\hrulefill\\[0.8cm]	
+
+{\LARGE \textbf{Desarrollo de videojuegos para plataforma Android con aceleración hardware}}\\[6cm] 
+\end{center}
+
+\begin{center}
+{\large \textbf{Autor: \hspace*{3mm}Adrián Ángeles Ramón}}
+\end{center}
+\begin{center}
+\newline
+{\large \textbf{Tutor: \hspace*{3mm}Ángel Herranz Nieva}}
+\\[1cm]
+\end{center}
+\begin{center}
+{\large {\color{gray45}\textbf{FEBRERO,2014}}}
+\end{center}
+\cleardoublepage
+
+\renewcommand{\thepage}{\roman{page}}
+\include{Parte0_Resumen}
+
+\cleardoublepage
+
+\vspace*{4cm}
+\hspace*{5cm}\textit{Dedicado a mis padres por su apoyo incondicional.}\\
+\hspace*{5cm}\textit{A mi hermana por sus múltiples paseos hasta mi cuarto.}\\
+\hspace*{5cm}\textit{A Yolanda por formar parte del Pequeño Team.}\\
+\hspace*{5cm}\textit{A Margüenda por dar sentido a la palabra amistad.}\\
+\hspace*{5cm}\textit{A Emilio por la camiseta de SlashMobility que aún espero.}\\
+\hspace*{5cm}\textit{A Ángel Herranz por su paciencia y consejos.}\\
+
+\newpage
+
+\tableofcontents*
+\newpage
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{0}
+
+\pagestyle{fancy}
+
+\part{Introducción}
+\include{Parte1_Objetivos} 
+
+\part{Conocimientos previos}
+\include{Parte2_Android}
+
+\include{Parte2_Render}
+\include{Parte2_Fisica}
+
+\part{Desarrollo del proyecto}
+\include{Parte3_Analisis_Pacmania}
+\include{Parte3_Diseno_TtcGameEngine}
+\include{Parte3_Diseno_Pacmania}   
+
+\include{Apendice_Conclusiones}		
+
+\nocite{*}
+\bibliographystyle{unsrt}
+\bibliography{mybibliography}
+
+\pagestyle{empty}
+\part{Apendices}	
+\include{Apendice_CaracteristicasHtcDream}      	
+\include{Apendice_CaracteristicasHtcDesire}      	
+
+
+
+
+
+				 	
+\end{document}

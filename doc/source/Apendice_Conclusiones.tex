@@ -1,0 +1,34 @@
+\chapter{Conclusiones y líneas futuras}
+
+La realización de este proyecto de fin de carrera no habría sido posible pensando en él como un mero trámite para finalizar la carrera. De haber sido así, podría haber presentado cualquiera de los proyectos en los que he estado involucrado en mi vida profesional, por ejemplo el sistema de gestión de recursos aeroportuarios de la Terminal 4 de Barajas, el sistema de gestión de reclamaciones de una empresa de seguros, sistema de cámaras de vigilancia\ldots\ Sin embargo, quería hacer algo distinto, fuera del ámbito de las aplicaciones de gestión, un proyecto que satisfaciera mis curiosidades.
+\newline
+
+Estar trabajando me ha permitido afrontar el proyecto, con tranquilidad, sin una fecha límite, permitiéndome dedicar el tiempo suficiente para asimilar los complejos conocimientos necesarios para realizar un proyecto de estas características. He partido de cero en lo referente al desarrollo de videojuegos, aunque con una base sólida adquirida durante la licenciatura.
+\newline
+
+Tras finalizar el proyecto se ha logrado adquirir un sólida base en el desarrollo de videojuegos. Esta situación ha permitido codificar la librería \emph{TfcGameEngine}, de ámbito general, para el desarrollo de videojuegos. También se ha desarrollado con éxito una prueba de concepto de la librería. Esta prueba ha consistido en desarrollar el videojuego \emph{Pacmania}, el cual ha sido probado de forma satisfactoria en varios smartphones y tablet. Para alcanzar estos ambiciosos objetivos se ha tenido que llevar a cabo una larga fase de documentación sobre cómo desarrollar videojuegos. 
+\newline
+
+Durante el desarrollo del proyecto han existido innumerables complicaciones, las más destacables, por enumerar algunas son:
+\begin{itemize}
+\item Dificultad para realizar debug sobre la aplicación. El bucle principal del juego se ejecuta varias veces por segundo y un fallo ocurrido en la enesima iteración puede haberse solventado en siguiente iteración, dificultando la detección del fallo.
+\item La programación de \emph{shaders} con GLSL es bastante rudimentaria. Cualquier fallo en su codificación puede llevarnos a renderizar imágenes totalmente en negro.
+\item El modelo de información del videojuego puede ser modificado por el thread de OpenGL y el thread principal de la aplicación. Por lo que ha sido necesario la creación de zonas de exclusión mutua.
+\item La comunicación con la interfaz gráfica de Android desde el thread de OpenGL no está permitida, provocando una excepción. Para resolver esta situación se ha tenido que recurrir al paso de mensajes.
+\item El emulador que viene incorporado en el kit de desarrollo de Android no soporta correctamente OpenGL ES 2.0, por lo tanto, ha sido necesario disponer de un smartphone para realizar cualquier tipo de prueba.
+\item El recolector de basura de la versión Froyo de Android se ejecuta bruscamente, paralizando la ejecución de las aplicaciones durante un tiempo razonable para cualquier aplicación que no sea un videojuego, en el cual se pierde la suavidad del movimiento. La versión Gingerbread, que no estaba disponible de manera oficial para el smartphone destinado al proyecto, resuelve esta problemática. La solución ha sido rootearlo e instalar una versión no oficial llamada Cyanogen.
+\item Problemas de rendimiento debidas al alto número de invocaciones a la tarjeta gráfica para dibujar las pastillas existentes en el escenario, reduciendo de forma considerable el número de imágenes mostradas por segundo. La solución a esta situación se ha basado en la creación de una única malla sin caras, sólo vértices y cada uno de ellos se correspondía a una pastilla. También ha sido necesaria una estructura de datos adicional en la cual se identificaba qué pastillas eran visibles y cuales no. Toda esta información es analizada por un shader, que la procesa mostrando por cada vértice visible una partícula del tamaño de la pastilla.
+\end{itemize}
+
+Actualmente el videojuego soporta un número de frames aceptable, aunque no es lo suficiente rápido para videojuegos con elementos de un mayor nivel de detalle. Una línea futura para optimizar el rendimiento sería la implementación de un algoritmo octree, aún así no sería comparable con los framework de desarrollo de videojuegos actuales. Estos framework utilizan NDK, un kit de desarrollo de Android que permite construir librerías compartidas para poder llamar desde Java a código nativo C o C++, lo que nos permite una mayor realizar una mejor gestión de la memoria, evitando el recolector de basura de Dalvik. 
+\newline
+
+La librería desarrollada contiene las funcionalidades básicas para crear un videojuego, por lo que existen múltiples funcionalidades que pueden ser añadidas con mayor o menor dificultad. Las más destacables y que podrían ser en sí un proyecto de fin de carrera son las siguientes:
+\begin{itemize}
+\item Usar las funciones físicas y de detección de colisiones que han sido desarrolladas en el proyecto hasta lograr un modelo físico, que permita simular la gravedad, rozamientos entre objetos y uniones entre ellos por algún tipo de junta, como por ejemplo bisagras.
+\item Crear una herramienta que procesando la información de la malla, almacenada en el formato \emph{Wavefront}, genere una forma implícita simplificada, permitiendo realizar un cálculo de colisiones óptimo. 
+\item Generación de animaciones de los elementos mediante armaduras en lugar de secuenciar mallas. El concepto de armadura se describe en la página \pageref{sec:armadura}.
+\item Desarrollar \emph{shaders} que calculen en tiempo de ejecución la iluminación de la escena, utilizando modelos de iluminación, en lugar de calcularla previamente mediante la técnica de \emph{texture bake}. Los conceptos de modelo de iluminación y \emph{texture bake} son descritos en las páginas \pageref{modeloIluminacion} y \pageref{textureBake} respectivamente.
+\item Desarrollo de un modelo de red que permita jugar online varios jugadores.
+\item Incluir funciones de mapeo con texturas, como por ejemplo \emph{normal mapping} y \emph{displace mapping} descritas en la página \pageref{funcionesMapeo}.
+\end{itemize}
