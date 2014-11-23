@@ -1,0 +1,13 @@
+uniform   mat4 u_mvpMatrix;
+uniform   float u_scale;
+attribute vec4 a_vertex;
+attribute vec2 a_texCoord;
+varying vec2 v_texCoord;
+
+void main()
+{
+  vec4 scale_vertex = a_vertex;
+  scale_vertex.xyz *= u_scale;
+  gl_Position =   u_mvpMatrix * scale_vertex;
+  v_texCoord = a_texCoord;
+}

@@ -1,0 +1,13 @@
+attribute vec3 a_position;                           
+attribute float a_visible;                           
+uniform mat4 u_mvpMatrix;                 	    
+varying float v_visible;                    			
+
+void main()  
+{                                                   
+  gl_Position.xyz = a_position;                     
+  gl_Position.w = 1.0;                              
+  gl_Position = u_mvpMatrix * gl_Position;           
+  gl_PointSize = 10.0; 							
+  v_visible = a_visible;                            
+}

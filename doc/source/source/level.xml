@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<World  name="Blocktown" description="Escenario de lego">
+	<Scene>     
+		<WALL          x="0" y= "17"/>
+		<WALL          x="1" y= "17"/>
+		..............................	
+  
+		<SMALL_PILL    x="1" y= "16"/>   
+		<SMALL_PILL    x="2" y= "16"/> 		
+		..............................
+
+		<PACMAN_START  x="6" y=  "5"/>   
+		.............................
+	</Scene>
+	<Ghost x="6" y="13" mesh="Ghost1" speed="7" ia="0"/>
+	<Ghost x="6" y="13" mesh="Ghost2" speed="5" ia="0"/>
+</World>

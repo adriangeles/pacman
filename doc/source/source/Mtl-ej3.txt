@@ -1,0 +1,31 @@
+# Blender MTL File: 'SandboxLand.blend'
+# Material Count: 3
+newmtl Material_Azul_InternalWallTexture
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.003194 0.028797 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 0.700000
+illum 2
+map_Kd InternalWallTexture.png
+
+newmtl Material_Floor
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Floor.png
+
+newmtl Material_Gris_ExternalWallTexture
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.383237 0.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ExternalWallTexture.png
