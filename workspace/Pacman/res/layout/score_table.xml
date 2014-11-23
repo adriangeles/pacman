@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:paddingBottom="50px" 
+	android:paddingLeft="50px"
+	android:paddingRight="50px" 
+	android:paddingTop="120px"
+	android:background="@drawable/score_background" 
+	android:orientation="vertical">
+	<TableLayout 
+		android:id="@+id/scoretable"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" 
+		android:stretchColumns="1">
+
+		<TableRow>
+			<TextView 
+				android:layout_column="0" 
+				android:text="Position"
+				android:gravity="center"				
+				android:paddingLeft="8px"
+				android:paddingRight="8px"								
+			 />
+			<TextView 
+				android:layout_column="1"
+				android:gravity="center" 
+				android:text="Name"
+				android:paddingLeft="8px"
+				android:paddingRight="8px"	
+			 />
+
+			<TextView 
+				android:layout_column="2"
+				android:gravity="center" 
+				android:text="Point"
+				android:paddingLeft="8px"
+				android:paddingRight="8px"				
+			 />
+
+		</TableRow>
+
+	</TableLayout>
+
+</LinearLayout>

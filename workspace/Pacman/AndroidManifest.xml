@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="es.upm.fi.f980092.tfc"
+      android:versionCode="1"
+      android:versionName="1.0"      
+      android:installLocation="auto">
+
+    <uses-feature></uses-feature>
+    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+    <application
+        android:allowBackup="false"
+        android:debuggable="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+   
+        <activity
+            android:name="es.upm.fi.f980092.tfc.pacman.activities.Boot"
+            android:label="Booting"
+            android:screenOrientation="portrait" >
+
+               <intent-filter>
+                	<action android:name="android.intent.action.MAIN" />
+                	<category android:name="android.intent.category.LAUNCHER" />
+            	</intent-filter>
+        </activity>
+    	    		    	    		 
+        <activity android:name="es.upm.fi.f980092.tfc.pacman.activities.Pacman"
+        		  android:screenOrientation="portrait"
+                  android:label="@string/app_name">    		 
+        </activity>
+        
+        <activity
+            android:name="es.upm.fi.f980092.tfc.pacman.activities.StartGame"
+            android:label="Game"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="es.upm.fi.f980092.tfc.pacman.activities.UnderConstructionActivity"
+            android:label="Bajo Construción" />
+        <activity
+            android:name="es.upm.fi.f980092.tfc.pacman.activities.Preferences"
+            android:label="Settings" />
+        <activity
+            android:name="es.upm.fi.f980092.tfc.pacman.activities.Scores"
+            android:label="Scores"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="es.upm.fi.f980092.tfc.pacman.activities.LevelSimulation"
+            android:label="LevelSimulation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="es.upm.fi.f980092.tfc.pacman.activities.StartLevel"
+            android:label="Level"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pacman.activities.VideoPresentation"
+            android:label="Video"
+            android:screenOrientation="portrait" />
+    </application>
+<uses-sdk android:minSdkVersion="8" />
+    
+   
+</manifest>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"  
+  android:paddingBottom="30px"
+  android:paddingLeft="30px"
+  android:paddingRight="30px"
+  android:paddingTop="120px"  
+  android:background="@drawable/score_background"
+  android:orientation="vertical">  
+	<ListView android:id="@+id/ListView01" 
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:background="#33000000"
+		android:focusable="false"
+		android:focusableInTouchMode="false"
+		android:divider="#FF0000"
+		android:dividerHeight="2px"
+		android:footerDividersEnabled="true"
+		android:headerDividersEnabled="false"	
+		android:clickable="false"			
+		xmlns:android="http://schemas.android.com/apk/res/android">
+	</ListView>
+	
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Pacman</string> 
+    <string name="start">Comenzar juego</string>    
+	<string name="exit">Salir</string>
+	<string name="about">Acerca de</string>
+	<string name="score">Marcadores</string>
+	<string name="config">Configuración</string>
+	<string name="cancel">Volver</string>
+	
+<!--	CONFIGURACION-->
+
+	<string name="sound_title">Sonido</string>
+	<string name="sound_summary">Activar el sonido del juego</string>
+	<string name="module_Path">Directorio del modulo</string>
+	<string name="module_Path_summary">Seleccion el directorio del modulo</string>
+	<string name="module_Path_title">Modulos disponibles</string>
+	<string name="opengl_summary">Activate programable pipeline for shaders</string>
+	<string name="opengl_title">OpenGL ES 2.0</string>
+	
+	
+</resources>

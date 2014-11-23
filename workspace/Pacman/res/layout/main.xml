@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:background="@drawable/mainbackground" android:paddingLeft="50dip" android:paddingRight="50dip" android:paddingTop="180dip">
+
+<TextView android:id="@+id/StartTextButton" 
+	android:text="@string/start" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+/>
+	
+<Button android:id="@+id/StartButton"
+	android:text="@string/start"
+	android:layout_width="fill_parent"
+    android:layout_height="wrap_content"    
+ />
+
+<Button android:id="@+id/ConfigButton"
+	android:text="@string/config" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"	 
+/>
+
+<Button android:id="@+id/ScoreButton"
+	android:text="@string/score" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"	 
+/>
+
+<Button android:id="@+id/AboutButton"
+	android:text="@string/about" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"	 
+/>
+
+<Button android:id="@+id/ExitButton"
+	android:text="@string/exit" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"	 
+/>
+
+
+	
+
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Pacman</string>    
+    <string name="start">Start game</string>    
+	<string name="exit">Exit</string>
+	<string name="about">About</string>
+	<string name="score">Score</string>
+	<string name="config">Configuration</string>
+	<string name="cancel">Back</string>
+	
+<!--	SETTING-->
+
+	<string name="sound">Sound</string>
+	<string name="sound_title">Sound</string>
+	<string name="sound_summary">Activate the sound of the game</string>
+	<string name="module_Path">Module Path</string>
+	<string name="module_Path_summary">Select the path of the module</string>
+	<string name="module_Path_title">Available modules</string>
+	<string name="opengl_summary">Activate programmable pipeline for shaders</string>
+	<string name="opengl_title">OpenGL ES 2.0</string>
+	
+	<string name="physics_summary">Enable physics</string>
+	<string name="physics_title">Physics</string>
+	
+	<string name="render_summary">Enable render</string>
+	<string name="render_title">Rendering</string>
+	
+	<string name="cameraMode_summary">Enable camera mode</string>
+	<string name="cameraMode_title">CameraMode</string>
+	
+	<string name="renderOptimization_summary">Enable render optimization</string>
+	<string name="renderOptimization_title">RenderOptmization</string>
+	
+	<string name="configurationpath_summary">Ubicacion del directorio PacmanConfig</string>
+	<string name="configurationpath_title">PacmanConfig Path</string>
+	
+	<!-- 
+		Variables de dialogo en la actividad de seleccion de escenario 
+		al no encontrar un módulo	
+	-->
+	<string name="dialog_parsing_module_title">Parsing Module Error</string>
+	<string name="dialog_parsing_module_text">Imposible to read the module, change it in the setting</string>
+	
+	<!-- 
+		Variables de dialogo en la actividad de preferencias 
+		al no encontrar ningun módulo	
+	-->
+	<string name="dialog_module_not_found_title">Missing modules</string>
+	<string name="dialog_module_not_found_text">There is not modules in the directory /sdcard/PacmanConfig/modules please add at least new one</string>
+	
+	<!-- 
+		Variables de dialogo al pausar un nivel 
+	-->
+	<string name="dialog_level_paused_title">Paused Game</string>
+	<string name="dialog_level_paused_text">Press the return button to continue</string>
+	
+</resources>

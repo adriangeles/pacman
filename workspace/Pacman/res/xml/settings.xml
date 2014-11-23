@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<CheckBoxPreference android:defaultValue="true" 
+	                    android:key="music" 
+	                    android:summary="@string/sound_summary" 
+	                    android:title="@string/sound_title"/>
+	                    
+	<EditTextPreference android:defaultValue="/sdcard/PacmanConfig/" 
+	                    android:key="PacmanConfig Path" 
+	                    android:summary="@string/configurationpath_summary" 
+	                    android:title="@string/configurationpath_title"/>
+</PreferenceScreen>
+

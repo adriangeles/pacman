@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="15px"
+    android:paddingLeft="15px"
+    android:paddingRight="15px"
+    android:paddingTop="30px" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/escudo"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/logText"
+            android:layout_width="match_parent"
+            android:layout_height="312dp"
+            android:layout_weight="0.24"
+            android:background="#C000"
+            android:gravity="top"
+            android:clickable="false"
+            android:editable="false"
+            android:focusable="false"
+            android:inputType="textMultiLine"
+            android:typeface="monospace"
+            android:textSize="12sp"
+            android:textColor="@color/BOOT_WHITE"
+            android:textAppearance="?android:attr/textAppearanceSmall">
+        </EditText>
+    </LinearLayout>
+
+</LinearLayout>

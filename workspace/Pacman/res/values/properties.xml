@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<bool name="Autopause">false</bool>
+	<string name="frameTime">50</string>
+	<bool name="ActiveRender">true</bool>
+	<bool name="ActivePhysics">false</bool>	
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="Button">#5FFF</color>
+    <color name="BlackTransparent">#A000</color>
+    <color name="Test_red_color">#A00</color>
+    <color name="Test_green_color">#0A0</color>
+    <color name="Test_blue_color">#00A</color>
+    <color name="Test_black_color">#C000</color>
+    <color name="Test_white_color">#CFFF</color>
+    <color name="BOOT_RED">#F00</color>
+    <color name="BOOT_GREEN">#0F0</color>
+    <color name="BOOT_BLUE">#00F</color>
+    <color name="BOOT_WHITE">#ADD8E6</color>
+
+</resources>
